@@ -1,0 +1,53 @@
+input[type="number"],
+input[type="text"] {
+  width: 25%;
+}
+input[name="score"] {
+  width: 80%;
+}
+
+@media (max-width: 1200px) {
+  input[type="number"],
+  input[type="text"] {
+    width: 30%;
+  }
+  input[name="score"] {
+    width: 70%;
+  }
+}
+
+@media (max-width: 992px) {
+  input[type="number"],
+  input[type="text"] {
+    width: 40%;
+  }
+  input[name="score"] {
+    width: 65%;
+  }
+}
+
+@media (max-width: 768px) {
+  input[type="number"],
+  input[type="text"] {
+    width: 55%;
+  }
+  input[name="score"] {
+    width: 90%;
+  }
+}
+@media (max-width: 576px) {
+  input[type="number"],
+  input[type="text"] {
+    width: 55%;
+  }
+  input[name="score"] {
+    width: 90%;
+  }
+}
+
+@media (max-width: 440px) {
+  input[type="number"],
+  input[type="text"] {
+    width: 90%;
+  }
+}
