@@ -20,32 +20,37 @@ input[name="score"] {
 
 @media (max-width: 992px) {
   input[type="number"],
-  input[type="text"],
-  .custom-select {
+  input[type="text"] {
     width: 40%;
   }
   input[name="score"] {
     width: 65%;
   }
+  .custom-select {
+    width: 30%;
+  }
 }
 
 @media (max-width: 768px) {
-  input[type="number"],
-  input[type="text"],
-  .custom-select {
-    width: 55%;
-  }
-  input[name="score"] {
-    width: 90%;
-  }
-}
-@media (max-width: 576px) {
   input[type="number"],
   input[type="text"] {
     width: 55%;
   }
   input[name="score"] {
     width: 90%;
+  }
+  .custom-select {
+    width: 30%;
+  }
+  .customer__select {
+    width: 40%;
+  }
+}
+@media (max-width: 576px) {
+  input[type="number"],
+  input[type="text"],
+  .custom-select {
+    width: 60%;
   }
   .custom-select {
     display: block;
