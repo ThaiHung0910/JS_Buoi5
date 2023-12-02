@@ -168,7 +168,7 @@ document.querySelector(".taxBtn").onclick = function () {
   var totalIncomeTax = salaryTax(totalIncome, person);
   var result = caculateTaxMoney(totalIncomeTax);
   if (person >= 0) {
-    if (totalIncome == "" || totalIncome < 0 || totalIncomeTax <= 0) {
+    if (totalIncome <= 0 || totalIncomeTax <= 0) {
       alert("Số tiền thu nhập không hợp lệ! Vui lòng nhập lại");
     }
     else {
