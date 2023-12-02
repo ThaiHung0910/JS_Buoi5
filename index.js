@@ -7,9 +7,6 @@ Cách xử lý: điểm tổng kết = tổng điểm 3 môn thi của thí sinh
 Đầu ra: thí sinh đậu hoặc rớt, tổng điểm
 */
 
-
-var result;
-
 function sumScore(score1, score2, score3) {
   return score1 + score2 + score3;
 }
@@ -23,6 +20,7 @@ function scoreResult(diem, uuTien) {
 }
 
 document.querySelector(".scoreBtn").onclick = function () {
+  var result;
   var diemChuan = document.getElementById("diemChuan").value * 1;
   var score1 = document.getElementById("score1").value * 1;
   var score2 = document.getElementById("score2").value * 1;
@@ -64,7 +62,38 @@ Cách xử lý: số tiền phải trả tương ứng với kW tiêu thụ xác
 Đầu ra: họ tên và số tiền phải trả
 */
 var money = 0;
-var result = 0;
+
+// function kwMoney (Kw) {
+//   var point = 50;
+//   if (Kw <= point) {
+//     return 500 ;
+//   } else if (Kw > point && Kw <= (point + 50)) {
+//     return 650 
+//   } else if (Kw > (point + 50) && Kw <= (point + 100)) {
+//     return 850 
+//   } else if (Kw > (point + 100) && Kw <= (point + 150)) {
+//     return  1100 
+//   } else {
+//     return 1300
+//   }
+// }
+
+// function caculateElecMoney(Kw, Kwmoney) {
+//   var point = 50;
+//   if (Kw <= point) {
+//     money = Kwmoney * Kw;
+//   } else if (Kw > point && Kw <= (point + 50)) {
+//     money = (Kwmoney - 150) * point + Kwmoney * (Kw - point);
+//   } else if (Kw > (point + 50) && Kw <= (point + 100)) {
+//     money = (Kwmoney -350) * point + (Kwmoney - 200) * point + Kwmoney * (Kw - (point + 50));
+//   } else if (Kw > (point + 100) && Kw <= (point + 150)) {
+//     money = (Kwmoney - 600) * point + (Kwmoney - 450) * point + (Kwmoney - 250) * (point + 50) + Kwmoney * (Kw - (point + 150));
+//   } else {
+//     money = (Kwmoney - 800) * point + (Kwmoney - 650) * point + (Kwmoney - 450) * (point + 50) + (Kwmoney - 200) * (point + 100) + Kwmoney * (Kw - (point + 300));
+//   }
+//   return money;
+// }
+
 function caculateElecMoney(Kw) {
   if (Kw <= 50) {
     money = 500 * Kw;
@@ -83,6 +112,8 @@ function caculateElecMoney(Kw) {
 document.querySelector(".elecBtn").onclick = function () {
   var name = document.querySelector('input[name="elec"]').value;
   var Kw = document.getElementById("Kw").value * 1;
+  // var moneyAvailable = kwMoney(Kw)
+  // var result =  caculateElecMoney(Kw, moneyAvailable)
 
   if (Kw > 0) {
     document.querySelector(".elecResult").innerHTML =
@@ -125,7 +156,7 @@ function caculateTaxMoney(money) {
   } else if (money > 624 * MIL && money <= 960 * MIL) {
     return (money * (TAX + 25)) / 100;
   } else {
-    return (money * (TAX + 35)) / 100;
+    return (money * (TAX + 30)) / 100;
   }
 }
 
@@ -177,15 +208,24 @@ document.querySelector('select[name="customer"]').addEventListener("change", fun
 }) 
 
 function caculateCableMoney(customer, service, channel) {
+  var billMoney;
+  var serviceMoney;
+  var channelMoney;
   switch (customer) {
     case "house":
-      moneyCable = 4.5 + 20.5 + channel * 7.5;
+      billMoney = 4.5
+      serviceMoney = 20.5
+      channelMoney = 7.5 
+      moneyCable = billMoney + serviceMoney + channel * channelMoney;
       break;
     case "company":
-      if (channel <= 10) {
-        moneyCable = 15 + 75 + channel * 50;
+      billMoney = 15
+      channelMoney = 50 
+      serviceMoney = 75
+      if (service <= 10) {
+        moneyCable = billMoney + serviceMoney + channel * channelMoney;
       } else {
-        moneyCable = 15 + 75 + (service - 10) * 5 + channel * 50;
+        moneyCable = billMoney + serviceMoney + (service - 10) * 5 + channel * channelMoney;
       }
       break;
     default:
@@ -193,6 +233,25 @@ function caculateCableMoney(customer, service, channel) {
   }
   return moneyCable;
 }
+
+// function caculateCableMoney(customer, service, channel) {
+//   switch (customer) {
+//     case "house":
+//       moneyCable = 4.5 + 20.5 + channel * 7.5;
+//       break;
+//     case "company":
+//       if (service <= 10) {
+//         moneyCable = 15 + 75 + channel * 50;
+//       } else {
+//         moneyCable = 15 + 75 + (service - 10) * 5 + channel * 50;
+//       }
+//       break;
+//     default:
+//       return alert("Hãy chọn loại khách hàng");
+//   }
+  
+//   return moneyCable;
+// }
 
 document.querySelector(".cableBtn").onclick = function () {
   var selectCustomer = document.querySelector('select[name="customer"]').value;
@@ -205,7 +264,7 @@ document.querySelector(".cableBtn").onclick = function () {
 
   if (connectNumber >= 0 && channel >=0) {
     document.querySelector(".cableResult").innerHTML =
-    `Mã khách hàng ${customerId} <br> Tiền cáp của bạn là ` +
+    `Mã khách hàng: ${customerId} <br> Tiền cáp của bạn là ` +
     result.toLocaleString("en-US", {
       style: "currency",
       currency: "USD",

@@ -1,5 +1,6 @@
 input[type="number"],
-input[type="text"] {
+input[type="text"],
+.custom-select {
   width: 25%;
 }
 input[name="score"] {
@@ -8,7 +9,8 @@ input[name="score"] {
 
 @media (max-width: 1200px) {
   input[type="number"],
-  input[type="text"] {
+  input[type="text"],
+  .custom-select {
     width: 30%;
   }
   input[name="score"] {
@@ -18,7 +20,8 @@ input[name="score"] {
 
 @media (max-width: 992px) {
   input[type="number"],
-  input[type="text"] {
+  input[type="text"],
+  .custom-select {
     width: 40%;
   }
   input[name="score"] {
@@ -28,7 +31,8 @@ input[name="score"] {
 
 @media (max-width: 768px) {
   input[type="number"],
-  input[type="text"] {
+  input[type="text"],
+  .custom-select {
     width: 55%;
   }
   input[name="score"] {
@@ -43,11 +47,15 @@ input[name="score"] {
   input[name="score"] {
     width: 90%;
   }
+  .custom-select {
+    display: block;
+  }
 }
 
 @media (max-width: 440px) {
   input[type="number"],
-  input[type="text"] {
+  input[type="text"],
+  .custom-select {
     width: 90%;
   }
   select[name="area"],
