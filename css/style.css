@@ -50,4 +50,11 @@ input[name="score"] {
   input[type="text"] {
     width: 90%;
   }
+  select[name="area"],
+  select[name="object"] {
+    display: block;
+  }
+  select[name="area"] {
+    margin-bottom: 8px;
+  }
 }
