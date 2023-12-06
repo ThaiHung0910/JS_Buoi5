@@ -62,49 +62,24 @@ Cách xử lý: số tiền phải trả tương ứng với kW tiêu thụ xác
 Đầu ra: họ tên và số tiền phải trả
 */
 var money = 0;
+const KW1 = 500
+const KW2 = 650
+const KW3 = 850
+const KW4 = 1100
+const KW5 = 1300
 
-// function kwMoney (Kw) {
-//   var point = 50;
-//   if (Kw <= point) {
-//     return 500 ;
-//   } else if (Kw > point && Kw <= (point + 50)) {
-//     return 650 
-//   } else if (Kw > (point + 50) && Kw <= (point + 100)) {
-//     return 850 
-//   } else if (Kw > (point + 100) && Kw <= (point + 150)) {
-//     return  1100 
-//   } else {
-//     return 1300
-//   }
-// }
 
-// function caculateElecMoney(Kw, Kwmoney) {
-//   var point = 50;
-//   if (Kw <= point) {
-//     money = Kwmoney * Kw;
-//   } else if (Kw > point && Kw <= (point + 50)) {
-//     money = (Kwmoney - 150) * point + Kwmoney * (Kw - point);
-//   } else if (Kw > (point + 50) && Kw <= (point + 100)) {
-//     money = (Kwmoney -350) * point + (Kwmoney - 200) * point + Kwmoney * (Kw - (point + 50));
-//   } else if (Kw > (point + 100) && Kw <= (point + 150)) {
-//     money = (Kwmoney - 600) * point + (Kwmoney - 450) * point + (Kwmoney - 250) * (point + 50) + Kwmoney * (Kw - (point + 150));
-//   } else {
-//     money = (Kwmoney - 800) * point + (Kwmoney - 650) * point + (Kwmoney - 450) * (point + 50) + (Kwmoney - 200) * (point + 100) + Kwmoney * (Kw - (point + 300));
-//   }
-//   return money;
-// }
-
-function caculateElecMoney(Kw) {
+function caculateElecMoney(Kw, kw1, kw2, kw3, kw4, kw5) {
   if (Kw <= 50) {
-    money = 500 * Kw;
+    money = kw1 * Kw;
   } else if (Kw > 50 && Kw <= 100) {
-    money = 500 * 50 + 650 * (Kw - 50);
+    money = kw1 * 50 + kw2 * (Kw - 50);
   } else if (Kw > 100 && Kw <= 200) {
-    money = 500 * 50 + 650 * 50 + 850 * (Kw - 100);
+    money = kw1 * 50 + kw2 * 50 + kw3 * (Kw - 100);
   } else if (Kw > 200 && Kw <= 350) {
-    money = 500 * 50 + 650 * 50 + 850 * 100 + 1100 * (Kw - 200);
+    money = kw1 * 50 + kw2 * 50 + kw3 * 100 + kw4 * (Kw - 200);
   } else {
-    money = 500 * 50 + 650 * 50 + 850 * 100 + 1100 * 150 + 1300 * (Kw - 350);
+    money = kw1 * 50 + kw2 * 50 + kw3 * 100 + kw4 * 150 + kw5 * (Kw - 350);
   }
   return money;
 }
@@ -112,13 +87,12 @@ function caculateElecMoney(Kw) {
 document.querySelector(".elecBtn").onclick = function () {
   var name = document.querySelector('input[name="elec"]').value;
   var Kw = document.getElementById("Kw").value * 1;
-  // var moneyAvailable = kwMoney(Kw)
-  // var result =  caculateElecMoney(Kw, moneyAvailable)
+
 
   if (Kw > 0) {
     document.querySelector(".elecResult").innerHTML =
       `Họ tên của bạn là ${name} <br /> Số tiền điện bạn cần phải thanh toán là ` +
-      caculateElecMoney(Kw).toLocaleString("it-IT", {
+      caculateElecMoney(Kw, KW1, KW2, KW3, KW4, KW5).toLocaleString("it-IT", {
         style: "currency",
         currency: "VND",
       });
